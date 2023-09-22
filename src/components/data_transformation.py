@@ -94,8 +94,3 @@ class DataTransformation:
             raise CustomException(e,sys)
 
 
-if __name__=="__main__":
-    data_ingestion_obj = DataIngestion()
-    train_data_path,test_data_path = data_ingestion_obj.initiate_data_ingestion()
-    data_transformation_obj = DataTransformation()
-    data_transformation_obj.initiate_data_trasformation(train_data_path,test_data_path)

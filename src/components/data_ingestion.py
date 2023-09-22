@@ -27,7 +27,7 @@ class DataIngestion:
             df.to_csv(self.data_ingestion_config.raw_data_path,index=False)
             logging.info('Raw data file is saved')
 
-            train_data,test_data = train_test_split(df,random_state=42,test_size=.25)
+            train_data,test_data = train_test_split(df,random_state=1,test_size=.25)
             logging.info('Data splited into train and test part')
 
             train_data.to_csv(self.data_ingestion_config.train_data_path,index=False)

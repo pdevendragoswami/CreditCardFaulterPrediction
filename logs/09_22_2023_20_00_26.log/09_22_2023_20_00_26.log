@@ -1,8 +1,0 @@
-[ 2023-09-22 20:00:27,235 ] 21 root - INFO - Data Ingestion is initiated
-[ 2023-09-22 20:00:27,308 ] 23 root - INFO - Data loaded as a dataframe
-[ 2023-09-22 20:00:27,578 ] 28 root - INFO - Raw data file is saved
-[ 2023-09-22 20:00:27,587 ] 31 root - INFO - Data splited into train and test part
-[ 2023-09-22 20:00:27,790 ] 34 root - INFO - Train data is saved into CSV file
-[ 2023-09-22 20:00:27,859 ] 37 root - INFO - Test data is saved into CSV file
-[ 2023-09-22 20:00:27,859 ] 39 root - INFO - Data Ingestion is completed.
-[ 2023-09-22 20:00:27,860 ] 86 root - INFO - There is some issue in data transformation
