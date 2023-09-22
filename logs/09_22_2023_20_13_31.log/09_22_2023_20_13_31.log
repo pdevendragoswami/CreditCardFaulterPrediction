@@ -1,0 +1,13 @@
+[ 2023-09-22 20:13:31,633 ] 21 root - INFO - Data Ingestion is initiated
+[ 2023-09-22 20:13:31,708 ] 23 root - INFO - Data loaded as a dataframe
+[ 2023-09-22 20:13:31,980 ] 28 root - INFO - Raw data file is saved
+[ 2023-09-22 20:13:31,990 ] 31 root - INFO - Data splited into train and test part
+[ 2023-09-22 20:13:32,196 ] 34 root - INFO - Train data is saved into CSV file
+[ 2023-09-22 20:13:32,270 ] 37 root - INFO - Test data is saved into CSV file
+[ 2023-09-22 20:13:32,270 ] 39 root - INFO - Data Ingestion is completed.
+[ 2023-09-22 20:13:32,270 ] 54 root - INFO - Data transformation is initiated
+[ 2023-09-22 20:13:32,346 ] 59 root - INFO - Train and test data is read as Dataframe
+[ 2023-09-22 20:13:32,351 ] 26 root - INFO - Data transformation Objecy is initiated
+[ 2023-09-22 20:13:32,351 ] 40 root - INFO - Pipeline is created
+[ 2023-09-22 20:13:32,351 ] 45 root - INFO - preprocessor object is created
+[ 2023-09-22 20:13:32,460 ] 92 root - INFO - There is some issue in data transformation
