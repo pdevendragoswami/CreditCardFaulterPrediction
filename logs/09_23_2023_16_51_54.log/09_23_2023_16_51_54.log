@@ -1,0 +1,24 @@
+[ 2023-09-23 16:51:55,719 ] 21 root - INFO - Data Ingestion is initiated
+[ 2023-09-23 16:51:55,794 ] 23 root - INFO - Data loaded as a dataframe
+[ 2023-09-23 16:51:56,084 ] 28 root - INFO - Raw data file is saved
+[ 2023-09-23 16:51:56,094 ] 31 root - INFO - Data splited into train and test part
+[ 2023-09-23 16:51:56,310 ] 34 root - INFO - Train data is saved into CSV file
+[ 2023-09-23 16:51:56,382 ] 37 root - INFO - Test data is saved into CSV file
+[ 2023-09-23 16:51:56,383 ] 39 root - INFO - Data Ingestion is completed.
+[ 2023-09-23 16:51:56,383 ] 55 root - INFO - Data transformation is initiated
+[ 2023-09-23 16:51:56,457 ] 60 root - INFO - Train and test data is read as Dataframe
+[ 2023-09-23 16:51:56,460 ] 27 root - INFO - Data transformation Objecy is initiated
+[ 2023-09-23 16:51:56,460 ] 41 root - INFO - Pipeline is created
+[ 2023-09-23 16:51:56,460 ] 46 root - INFO - preprocessor object is created
+[ 2023-09-23 16:51:56,564 ] 78 root - INFO - Data transformation is completed
+[ 2023-09-23 16:51:56,564 ] 10 root - INFO - Saving Object is initiated
+[ 2023-09-23 16:51:56,565 ] 18 root - INFO - Object is saved
+[ 2023-09-23 16:51:56,565 ] 85 root - INFO - Pickle file is saved
+[ 2023-09-23 16:51:56,565 ] 26 root - INFO - Spliting the data into train and test
+[ 2023-09-23 16:51:56,565 ] 40 root - INFO - Checking for model report
+[ 2023-09-23 16:53:06,490 ] 44 root - INFO - Model accuracy report obtained
+[ 2023-09-23 16:53:06,490 ] 45 root - INFO - {'LogisticRegression': 0.8074666666666667, 'DecisionTree': 0.7258666666666667, 'SVM': 0.8181333333333334, 'NaiveBayes': 0.7456, 'KNN': 0.7937333333333333, 'RandomForest': 0.8136}
+[ 2023-09-23 16:53:06,491 ] 57 root - INFO - Best model found: SVM, Best model accuracy:0.8181333333333334
+[ 2023-09-23 16:53:06,491 ] 10 root - INFO - Saving Object is initiated
+[ 2023-09-23 16:53:06,496 ] 18 root - INFO - Object is saved
+[ 2023-09-23 16:53:06,496 ] 66 root - INFO - Best Model obj is saved
