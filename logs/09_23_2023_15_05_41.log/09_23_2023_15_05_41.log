@@ -1,0 +1,24 @@
+[ 2023-09-23 15:05:42,480 ] 21 root - INFO - Data Ingestion is initiated
+[ 2023-09-23 15:05:42,560 ] 23 root - INFO - Data loaded as a dataframe
+[ 2023-09-23 15:05:42,832 ] 28 root - INFO - Raw data file is saved
+[ 2023-09-23 15:05:42,841 ] 31 root - INFO - Data splited into train and test part
+[ 2023-09-23 15:05:43,081 ] 34 root - INFO - Train data is saved into CSV file
+[ 2023-09-23 15:05:43,165 ] 37 root - INFO - Test data is saved into CSV file
+[ 2023-09-23 15:05:43,165 ] 39 root - INFO - Data Ingestion is completed.
+[ 2023-09-23 15:05:43,166 ] 55 root - INFO - Data transformation is initiated
+[ 2023-09-23 15:05:43,240 ] 60 root - INFO - Train and test data is read as Dataframe
+[ 2023-09-23 15:05:43,243 ] 27 root - INFO - Data transformation Objecy is initiated
+[ 2023-09-23 15:05:43,244 ] 41 root - INFO - Pipeline is created
+[ 2023-09-23 15:05:43,244 ] 46 root - INFO - preprocessor object is created
+[ 2023-09-23 15:05:43,346 ] 78 root - INFO - Data transformation is completed
+[ 2023-09-23 15:05:43,347 ] 10 root - INFO - Saving Object is initiated
+[ 2023-09-23 15:05:43,347 ] 18 root - INFO - Object is saved
+[ 2023-09-23 15:05:43,347 ] 85 root - INFO - Pickle file is saved
+[ 2023-09-23 15:05:43,348 ] 26 root - INFO - Spliting the data into train and test
+[ 2023-09-23 15:05:43,348 ] 40 root - INFO - Checking for model report
+[ 2023-09-23 15:05:44,648 ] 44 root - INFO - Model accuracy report obtained
+[ 2023-09-23 15:05:44,686 ] 45 root - INFO - {'LogisticRegression': 0.8074666666666667}
+[ 2023-09-23 15:05:44,686 ] 57 root - INFO - Best model found: LogisticRegression, Best model accuracy:0.8074666666666667
+[ 2023-09-23 15:05:44,688 ] 10 root - INFO - Saving Object is initiated
+[ 2023-09-23 15:05:44,690 ] 18 root - INFO - Object is saved
+[ 2023-09-23 15:05:44,691 ] 66 root - INFO - Best Model obj is saved

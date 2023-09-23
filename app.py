@@ -2,6 +2,8 @@ from flask import Flask,render_template,request,jsonify
 from src.pipelines.prediction_pipeline import CustomData,PredictPipeline
 from src.exception import CustomException
 from src.logger import logging
+import os
+import sys
 
 application = Flask(__name__)
 
@@ -24,12 +26,12 @@ def predict_datapoint():
                 education = int(request.form.get('education')),
                 marriage = int(request.form.get('education')),
                 age = int(request.form.get('education')),
-                pay_1 = float(request.form.get('pay_1')),
-                pay_2 = float(request.form.get('pay_2')),
-                pay_3 = float(request.form.get('pay_3')),
-                pay_4 = float(request.form.get('pay_4')),
-                pay_5 = float(request.form.get('pay_5')),
-                pay_6 = float(request.form.get('pay_6')),
+                pay_1 = (int(request.form.get('pay_1'))),
+                pay_2 = (int(request.form.get('pay_2'))),
+                pay_3 = (int(request.form.get('pay_3'))),
+                pay_4 = (int(request.form.get('pay_4'))),
+                pay_5 = (int(request.form.get('pay_5'))),
+                pay_6 = (int(request.form.get('pay_6'))),
                 bill_amt1 = float(request.form.get('bill_amt1')),
                 bill_amt2 = float(request.form.get('bill_amt2')),
                 bill_amt3 = float(request.form.get('bill_amt3')),

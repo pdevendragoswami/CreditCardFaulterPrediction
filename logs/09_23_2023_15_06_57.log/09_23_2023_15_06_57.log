@@ -1,0 +1,214 @@
+[ 2023-09-23 15:06:59,267 ] 187 werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.9:5000
+[ 2023-09-23 15:06:59,267 ] 187 werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2023-09-23 15:07:08,089 ] 114 root - INFO - Data converted into DF
+[ 2023-09-23 15:07:08,168 ] 30 root - INFO - There is some issue at predict values
+[ 2023-09-23 15:07:08,168 ] 57 root - INFO - There is some issue at predict_datapoint
+[ 2023-09-23 15:07:08,168 ] 1414 app - ERROR - Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/config/workspace/src/pipelines/prediction_pipeline.py", line 22, in predict_value
+    scaled_data = preprocessor.transform(features)
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/_set_output.py", line 157, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/config/.local/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 827, in transform
+    Xs = self._fit_transform(
+  File "/config/.local/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 681, in _fit_transform
+    return Parallel(n_jobs=self.n_jobs)(
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/parallel.py", line 65, in __call__
+    return super().__call__(iterable_with_config)
+  File "/config/.local/lib/python3.8/site-packages/joblib/parallel.py", line 1863, in __call__
+    return output if self.return_generator else list(output)
+  File "/config/.local/lib/python3.8/site-packages/joblib/parallel.py", line 1789, in _get_sequential_output
+    for func, args, kwargs in iterable:
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/parallel.py", line 61, in <genexpr>
+    iterable_with_config = (
+  File "/config/.local/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 684, in <genexpr>
+    X=_safe_indexing(X, column, axis=1),
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/__init__.py", line 353, in _safe_indexing
+    return _pandas_indexing(X, indices, indices_dtype, axis=axis)
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/__init__.py", line 199, in _pandas_indexing
+    return indexer[:, key] if axis else indexer[key]
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1097, in __getitem__
+    return self._getitem_tuple(key)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1289, in _getitem_tuple
+    return self._getitem_tuple_same_dim(tup)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 955, in _getitem_tuple_same_dim
+    retval = getattr(retval, self.name)._getitem_axis(key, axis=i)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1332, in _getitem_axis
+    return self._getitem_iterable(key, axis=axis)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1272, in _getitem_iterable
+    keyarr, indexer = self._get_listlike_indexer(key, axis)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1462, in _get_listlike_indexer
+    keyarr, indexer = ax._get_indexer_strict(key, axis_name)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexes/base.py", line 5877, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexes/base.py", line 5938, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_1', 'PAY_2',\n       'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2',\n       'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1',\n       'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6'],\n      dtype='object')] are in the [columns]"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "app.py", line 50, in predict_datapoint
+    pred_value = predict_pipeline_obj.predict_value(final_data)
+  File "/config/workspace/src/pipelines/prediction_pipeline.py", line 31, in predict_value
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [/config/workspace/src/pipelines/prediction_pipeline.py] line number [22] error message ["None of [Index(['LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_1', 'PAY_2',\n       'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2',\n       'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1',\n       'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6'],\n      dtype='object')] are in the [columns]"]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 58, in predict_datapoint
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [app.py] line number [50] error message [Error occured in python script name [/config/workspace/src/pipelines/prediction_pipeline.py] line number [22] error message ["None of [Index(['LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_1', 'PAY_2',\n       'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2',\n       'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1',\n       'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6'],\n      dtype='object')] are in the [columns]"]]
+[ 2023-09-23 15:07:08,173 ] 187 werkzeug - INFO - 172.18.0.2 - - [23/Sep/2023 15:07:08] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+[ 2023-09-23 15:07:11,584 ] 114 root - INFO - Data converted into DF
+[ 2023-09-23 15:07:11,586 ] 30 root - INFO - There is some issue at predict values
+[ 2023-09-23 15:07:11,586 ] 57 root - INFO - There is some issue at predict_datapoint
+[ 2023-09-23 15:07:11,586 ] 1414 app - ERROR - Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/config/workspace/src/pipelines/prediction_pipeline.py", line 22, in predict_value
+    scaled_data = preprocessor.transform(features)
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/_set_output.py", line 157, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/config/.local/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 827, in transform
+    Xs = self._fit_transform(
+  File "/config/.local/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 681, in _fit_transform
+    return Parallel(n_jobs=self.n_jobs)(
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/parallel.py", line 65, in __call__
+    return super().__call__(iterable_with_config)
+  File "/config/.local/lib/python3.8/site-packages/joblib/parallel.py", line 1863, in __call__
+    return output if self.return_generator else list(output)
+  File "/config/.local/lib/python3.8/site-packages/joblib/parallel.py", line 1789, in _get_sequential_output
+    for func, args, kwargs in iterable:
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/parallel.py", line 61, in <genexpr>
+    iterable_with_config = (
+  File "/config/.local/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 684, in <genexpr>
+    X=_safe_indexing(X, column, axis=1),
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/__init__.py", line 353, in _safe_indexing
+    return _pandas_indexing(X, indices, indices_dtype, axis=axis)
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/__init__.py", line 199, in _pandas_indexing
+    return indexer[:, key] if axis else indexer[key]
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1097, in __getitem__
+    return self._getitem_tuple(key)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1289, in _getitem_tuple
+    return self._getitem_tuple_same_dim(tup)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 955, in _getitem_tuple_same_dim
+    retval = getattr(retval, self.name)._getitem_axis(key, axis=i)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1332, in _getitem_axis
+    return self._getitem_iterable(key, axis=axis)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1272, in _getitem_iterable
+    keyarr, indexer = self._get_listlike_indexer(key, axis)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1462, in _get_listlike_indexer
+    keyarr, indexer = ax._get_indexer_strict(key, axis_name)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexes/base.py", line 5877, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexes/base.py", line 5938, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_1', 'PAY_2',\n       'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2',\n       'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1',\n       'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6'],\n      dtype='object')] are in the [columns]"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "app.py", line 50, in predict_datapoint
+    pred_value = predict_pipeline_obj.predict_value(final_data)
+  File "/config/workspace/src/pipelines/prediction_pipeline.py", line 31, in predict_value
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [/config/workspace/src/pipelines/prediction_pipeline.py] line number [22] error message ["None of [Index(['LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_1', 'PAY_2',\n       'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2',\n       'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1',\n       'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6'],\n      dtype='object')] are in the [columns]"]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 58, in predict_datapoint
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [app.py] line number [50] error message [Error occured in python script name [/config/workspace/src/pipelines/prediction_pipeline.py] line number [22] error message ["None of [Index(['LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_1', 'PAY_2',\n       'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2',\n       'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1',\n       'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6'],\n      dtype='object')] are in the [columns]"]]
+[ 2023-09-23 15:07:11,587 ] 187 werkzeug - INFO - 172.18.0.2 - - [23/Sep/2023 15:07:11] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+[ 2023-09-23 15:07:15,950 ] 187 werkzeug - INFO - 172.18.0.2 - - [23/Sep/2023 15:07:15] "GET / HTTP/1.1" 200 -
+[ 2023-09-23 15:07:22,217 ] 187 werkzeug - INFO - 172.18.0.2 - - [23/Sep/2023 15:07:22] "GET /predict HTTP/1.1" 200 -
+[ 2023-09-23 15:07:57,217 ] 114 root - INFO - Data converted into DF
+[ 2023-09-23 15:07:57,219 ] 30 root - INFO - There is some issue at predict values
+[ 2023-09-23 15:07:57,219 ] 57 root - INFO - There is some issue at predict_datapoint
+[ 2023-09-23 15:07:57,219 ] 1414 app - ERROR - Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/config/workspace/src/pipelines/prediction_pipeline.py", line 22, in predict_value
+    scaled_data = preprocessor.transform(features)
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/_set_output.py", line 157, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/config/.local/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 827, in transform
+    Xs = self._fit_transform(
+  File "/config/.local/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 681, in _fit_transform
+    return Parallel(n_jobs=self.n_jobs)(
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/parallel.py", line 65, in __call__
+    return super().__call__(iterable_with_config)
+  File "/config/.local/lib/python3.8/site-packages/joblib/parallel.py", line 1863, in __call__
+    return output if self.return_generator else list(output)
+  File "/config/.local/lib/python3.8/site-packages/joblib/parallel.py", line 1789, in _get_sequential_output
+    for func, args, kwargs in iterable:
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/parallel.py", line 61, in <genexpr>
+    iterable_with_config = (
+  File "/config/.local/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 684, in <genexpr>
+    X=_safe_indexing(X, column, axis=1),
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/__init__.py", line 353, in _safe_indexing
+    return _pandas_indexing(X, indices, indices_dtype, axis=axis)
+  File "/config/.local/lib/python3.8/site-packages/sklearn/utils/__init__.py", line 199, in _pandas_indexing
+    return indexer[:, key] if axis else indexer[key]
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1097, in __getitem__
+    return self._getitem_tuple(key)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1289, in _getitem_tuple
+    return self._getitem_tuple_same_dim(tup)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 955, in _getitem_tuple_same_dim
+    retval = getattr(retval, self.name)._getitem_axis(key, axis=i)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1332, in _getitem_axis
+    return self._getitem_iterable(key, axis=axis)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1272, in _getitem_iterable
+    keyarr, indexer = self._get_listlike_indexer(key, axis)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexing.py", line 1462, in _get_listlike_indexer
+    keyarr, indexer = ax._get_indexer_strict(key, axis_name)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexes/base.py", line 5877, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/config/.local/lib/python3.8/site-packages/pandas/core/indexes/base.py", line 5938, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_1', 'PAY_2',\n       'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2',\n       'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1',\n       'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6'],\n      dtype='object')] are in the [columns]"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "app.py", line 50, in predict_datapoint
+    pred_value = predict_pipeline_obj.predict_value(final_data)
+  File "/config/workspace/src/pipelines/prediction_pipeline.py", line 31, in predict_value
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [/config/workspace/src/pipelines/prediction_pipeline.py] line number [22] error message ["None of [Index(['LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_1', 'PAY_2',\n       'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2',\n       'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1',\n       'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6'],\n      dtype='object')] are in the [columns]"]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/config/.local/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 58, in predict_datapoint
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [app.py] line number [50] error message [Error occured in python script name [/config/workspace/src/pipelines/prediction_pipeline.py] line number [22] error message ["None of [Index(['LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_1', 'PAY_2',\n       'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2',\n       'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1',\n       'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6'],\n      dtype='object')] are in the [columns]"]]
+[ 2023-09-23 15:07:57,220 ] 187 werkzeug - INFO - 172.18.0.2 - - [23/Sep/2023 15:07:57] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
