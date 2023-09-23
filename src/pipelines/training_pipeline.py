@@ -1,0 +1,15 @@
+import os
+import sys
+
+from src.components.data_ingestion import DataIngestion
+from src.components.data_transformation import DataTransformation
+from src.components.model_training import ModelTrainer
+
+if __name__ == "__main__":
+    data_ingestion_object = DataIngestion()
+    train_data_path,test_data_path = data_ingestion_object.initiate_data_ingestion()
+    data_transformation_object = DataTransformation()
+    train_arr,test_arr,_ = data_transformation_object.initiate_data_trasformation(train_data_path, test_data_path)
+    model_training_object = ModelTrainer()
+    model_training_object.initiate_model_training(train_arr, test_arr)
+

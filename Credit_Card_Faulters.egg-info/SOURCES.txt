@@ -14,3 +14,5 @@ src/components/data_ingestion.py
 src/components/data_transformation.py
 src/components/model_training.py
 src/pipelines/__init__.py
+src/pipelines/prediction_pipeline.py
+src/pipelines/training_pipeline.py
