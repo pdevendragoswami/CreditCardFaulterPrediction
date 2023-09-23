@@ -20,20 +20,34 @@ def predict_datapoint():
         else:
             data = CustomData(
                 limit_bal=int(request.form.get('limit_bal')),
-                depth = float(request.form.get('depth')),
-                table = float(request.form.get('table')),
-                x = float(request.form.get('x')),
-                y = float(request.form.get('y')),
-                z = float(request.form.get('z')),
-                cut = request.form.get('cut'),
-                color= request.form.get('color'),
-                clarity = request.form.get('clarity'))
+                sex = int(request.form.get('sex')),
+                education = int(request.form.get('education')),
+                marriage = int(request.form.get('education')),
+                age = int(request.form.get('education')),
+                pay_1 = float(request.form.get('pay_1')),
+                pay_2 = float(request.form.get('pay_2')),
+                pay_3 = float(request.form.get('pay_3')),
+                pay_4 = float(request.form.get('pay_4')),
+                pay_5 = float(request.form.get('pay_5')),
+                pay_6 = float(request.form.get('pay_6')),
+                bill_amt1 = float(request.form.get('bill_amt1')),
+                bill_amt2 = float(request.form.get('bill_amt2')),
+                bill_amt3 = float(request.form.get('bill_amt3')),
+                bill_amt4 = float(request.form.get('bill_amt4')),
+                bill_amt5 = float(request.form.get('bill_amt5')),
+                bill_amt6 = float(request.form.get('bill_amt6')),
+                pay_amt1 = float(request.form.get('pay_amt1')),
+                pay_amt2 = float(request.form.get('pay_amt2')),
+                pay_amt3 = float(request.form.get('pay_amt3')),
+                pay_amt4 = float(request.form.get('pay_amt4')),
+                pay_amt5 = float(request.form.get('pay_amt5')),
+                pay_amt6 = float(request.form.get('pay_amt6')))
 
             final_data = data.get_data_as_dataframe()
             predict_pipeline_obj = PredictPipeline()
             pred_value = predict_pipeline_obj.predict_value(final_data)
 
-            results = round(pred_value[0],2)
+            results = pred_value[0]
 
             return render_template('results.html',final_result = results)
 
