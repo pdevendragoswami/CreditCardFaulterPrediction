@@ -48,8 +48,12 @@ def predict_datapoint():
             final_data = data.get_data_as_dataframe()
             predict_pipeline_obj = PredictPipeline()
             pred_value = predict_pipeline_obj.predict_value(final_data)
+            logging.info(f'predicted values:{pred_value}')
 
-            results = pred_value[0]
+            if pred_value[0] == 0:
+                results = ' not '
+            elif pred_value[0]  == 1:
+                results = ' '
 
             return render_template('results.html',final_result = results)
 
@@ -60,4 +64,6 @@ def predict_datapoint():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0',
+    debug=True,
+    port=5000)

@@ -39,12 +39,10 @@ def evaluate_model(models,X_train,X_test,y_train,y_test):
             true_negative = confusion_met[1][1]
 
             accuracy = (true_positive + true_negative) / (true_positive +false_positive + false_negative + true_negative)
-
-
-
+            
             reports[list(models.keys())[i]] = accuracy
 
-            return reports
+        return reports
             
     except Exception as e:
         logging.info('There is some issue at evaluation metrics')
